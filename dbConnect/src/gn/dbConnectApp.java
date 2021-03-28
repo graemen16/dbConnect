@@ -1,16 +1,9 @@
 package gn;
 
-import gn.Controller;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -28,9 +21,10 @@ public class dbConnectApp extends Application {
         
         GridPane statusGrid = new GridPane();
         statusGrid.add(statusStatic, 0, 0);
-        statusGrid.add(statusValue, 0, 1);
+        statusGrid.add(statusValue, 1, 0);
         
-        TableView tableView = new TableView();
+        @SuppressWarnings("rawtypes")
+		TableView tableView = new TableView();
         
         Controller.refreshTable(tableView);
         

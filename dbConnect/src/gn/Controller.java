@@ -1,5 +1,8 @@
 package gn;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -15,10 +18,30 @@ public class Controller {
 
 	public static String getStatus() {
 		String status = "OK";
+		try {
+			Connection conn = getConnection();
+		} catch (SQLException e) {
+			status = "Not OK!";
+			e.printStackTrace();
+		}
 		return status;
 	}
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    private static Connection getConnection() throws SQLException {
+		// TODO Auto-generated method stub
+    	String server = "localhost";
+    	String user = "sa";
+    	String password = "WdMcRg6qwXL7AE";
+    	String port = "1433";
+    	String sql = "jdbc:sqlserver://" + server 
+    			+ ":" + port 
+    			+ ";user=" + user 
+    			+ ";password=" + password;
+    	DriverManager.getConnection(sql);
+		return null;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void refreshTable(TableView tableView) {
 		// TODO Auto-generated method stub
     	tableView.getColumns().clear();
